@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/"> <!-- need to connect to Thymeleaf in order for this to work -->
+<head th:fragment="head">
+    <meta charset="UTF-8"/>
+    <title>Login</title>
+
+</head>
+<body>
+<div>
+    <h1 th:text="${title}">Default Title</h1>
+
+    <p th:text="${'Welcome ' + user.username}"></p>
+
+</div>
+</body>
+</html>
