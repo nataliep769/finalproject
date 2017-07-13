@@ -17,9 +17,8 @@
     <div>
         <label th:for="password">Password</label>
         <input type="password" th:field="*{password}"/>
-        <span th:errors="*{password}"></span>
     </div>
-
+    <p th:text="${error}"></p>
     <input type="submit" value="Login"/>
 
 </form>

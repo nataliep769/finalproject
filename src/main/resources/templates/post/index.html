@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/"> <!-- need to connect to Thymeleaf in order for this to work -->
+<head th:fragment="head">
+    <meta charset="UTF-8"/>
+    <title>My Posts</title>
+</head>
+<body>
+    <h1 th:text="${title}">Default Title</h1>
+    <div th:each="post : ${posts}">
+        <h2 th:text="${post.title}"></h2>
+        <h3 th:text="${post.headline}"></h3>
+        <div th:utext="${post.textBody}"></div> <!-- USING UTEXT ALLOWS THE COMPUTER TO CORRECTLY INTERPRET THE HTML MARKUP FROM THE RICH TEXT EDITOR -->
+    </div>
+</body>
+</html>

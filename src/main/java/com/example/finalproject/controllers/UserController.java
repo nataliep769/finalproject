@@ -9,7 +9,9 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
+//Make sure to kill other tasks in order to run the debugger //
 /**
  * Created by Natalie on 7/1/2017.
  */
@@ -36,7 +38,7 @@ public class UserController {
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
     public String processAddUserForm(@ModelAttribute @Valid User newUser,
-                                       Errors errors, Model model, String verify) {
+                                     Errors errors, Model model, String verify) {
 
         if (errors.hasErrors()) {
             return "user/add";
@@ -71,19 +73,21 @@ public class UserController {
     @RequestMapping(value = "login", method = RequestMethod.POST) //change the mapping value?//
     public String processLoginForm(@ModelAttribute @Valid User user, Errors errors, Model model) {
         model.addAttribute("title", "Login");
-
-        //if (errors.hasErrors()) {
-            //return "user/login";
-        //}
-        //Maybe ask someone about this part below?//
-        //Do I need to get and set the User Id?//
-        if (userDao.exists(user.getUserId())) { //need to define user//
-            return "user/index";
-          //  return //a page that welcomes the user, or send them to the home page of Between the Notes//
-        } else {
-
-        return "user/login";
-
+        //look up how to make queries with CRUD repository and Spring boot. Check out Spring Security//
+        List<User> users = (List<User>) userDao.findAll(); //Iterate over a list of users of type User == a user database object, converted to a list of users that can be iterated through.
+        //Boolean wasFound = false;
+        for (User dbUser : users) {
+            if (user.getUsername().equals(dbUser.getUsername()) && user.getPassword().equals(dbUser.getPassword())) { //told by a friend this isn't secure, but it works for
+                if (user.getUsername().equals("GoodOldNeon")) {
+                    return "user/admin"; //Have yet to create this template//
+                }
+                model.addAttribute("title", "Logged in!");
+                return "user/index"; //this returns the user/index template, but the RequestMapping maps us to the URL of /login
+                //  return //a page that welcomes the user, or send them to the home page of Between the Notes//
+            } else {
+                model.addAttribute("error", "Incorrect password");
+            }
         }
+        return "user/login";
     }
 }

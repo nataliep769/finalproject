@@ -14,16 +14,14 @@ import javax.validation.constraints.Size;
 public class Post {
     @Id
     @GeneratedValue
-    private int id;
+    private int postId;
 
-    @NotNull
+    //@Size(min=5, max=25)
     private String title;
 
-    @NotNull
     private String textBody;
 
-    @NotNull
-    @Size(min=10, max=50)
+    //@Size(min=10, max=50)
     private String headline;
 
     //Here I would create a field for the image. Do I need to create
@@ -32,15 +30,14 @@ public class Post {
     public Post() {
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public Post(int id, String title, String textBody, String headline) {
-        this.id = id;
+    public Post(String title, String textBody, String headline) {
         this.title = title;
         this.textBody = textBody;
         this.headline = headline;
+    }
+
+    public int getPostId() {
+        return postId;
     }
 
     public String getTitle() {

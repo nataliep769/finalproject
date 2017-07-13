@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/"> <!-- need to connect to Thymeleaf in order for this to work -->
+<head th:fragment="head">
+    <meta charset="UTF-8"/>
+    <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=ng1pbr0v1awiri4ewz2gzpdhx66afsx7s7w8flc6mn8aljym"></script>
+    <script>
+  tinymce.init({
+    selector: '#mytextarea'
+  });
+  </script>
+
+    <!-- Theme included stylesheets -->
+    <title>Add Post</title>
+</head>
+
+<body>
+<h1 th:text="${title}">Default Title</h1>
+<form method="post" th:object="${post}"> <!-- "action" changes the url of the post-->
+
+    <div>
+        <label th:for="title">Title</label>
+        <input type="text" th:value="*{title}"/>
+        <span th:errors="*{title}"></span>
+    </div>
+    <div>
+        <label th:for="headline">Headline</label>
+        <input type="text" value="*{headline}"/>
+        <span th:errors="*{headline}"></span>
+    </div>
+    <div>
+        <label th:for="textBody">New Post</label>
+        <textarea id="mytextarea" th:value="*{textBody}"></textarea>
+    </div>
+    <input type="hidden" th:value="${post.postId}" name="postId" />
+    <input type="submit" value="Submit new post"/>
+
+</form>
+</body>
+</html>
