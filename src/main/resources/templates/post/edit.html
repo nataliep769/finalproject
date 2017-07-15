@@ -19,17 +19,17 @@
 
     <div>
         <label th:for="title">Title</label>
-        <input type="text" th:value="*{title}"/>
+        <input type="text" th:field="*{title}" th:value="*{title}"/>
         <span th:errors="*{title}"></span>
     </div>
     <div>
         <label th:for="headline">Headline</label>
-        <input type="text" value="*{headline}"/>
+        <input type="text" th:field="*{headline}" value="*{headline}"/>
         <span th:errors="*{headline}"></span>
     </div>
     <div>
         <label th:for="textBody">New Post</label>
-        <textarea id="mytextarea" th:value="*{textBody}"></textarea>
+        <textarea id="mytextarea" th:field="*{textBody}" th:value="*{textBody}"></textarea>
     </div>
     <input type="hidden" th:value="${post.postId}" name="postId" />
     <input type="submit" value="Submit new post"/>

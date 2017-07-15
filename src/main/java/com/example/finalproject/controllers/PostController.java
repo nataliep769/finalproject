@@ -6,10 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -20,6 +17,14 @@ import javax.validation.Valid;
 public class PostController {
     @Autowired
     private PostDao postDao;
+
+    @RequestMapping(value = "")
+    public String index(Model model) {
+
+        model.addAttribute("posts", postDao.findAll());
+        model.addAttribute("title", "All Posts");
+        return "post/index";
+    }
 
     @RequestMapping(value = "add", method = RequestMethod.GET)
     public String displayAddPostForm(Model model) {
@@ -46,7 +51,7 @@ public class PostController {
         return "post/edit";
     }
 
-    @RequestMapping(value = "edit", method = RequestMethod.GET)
+    @RequestMapping(value = "edit", method = RequestMethod.POST)
     public String processEditForm(int postId, String title, String headline, String textBody) {
         Post post = postDao.findOne(postId);
         post.setHeadline(headline);
@@ -54,5 +59,32 @@ public class PostController {
         post.setTitle(title);
 
         return "post/index";
+    }
+
+    @RequestMapping(value = "view/{postId}", method = RequestMethod.GET)
+    public String viewMenuForm(@PathVariable int postId, Model model) { //remember the importance of setting a path variable -- sets up the URL //
+        Post post = postDao.findOne(postId);;
+
+        model.addAttribute("title", post.getTitle());
+        model.addAttribute("post", post);
+
+        return "post/view";
+    }
+
+    @RequestMapping(value = "remove", method = RequestMethod.GET)
+    public String displayRemoveCheeseForm(Model model) {
+        model.addAttribute("posts", postDao.findAll());
+        model.addAttribute("title", "Remove Post");
+        return "post/remove";
+    }
+
+    @RequestMapping(value = "remove", method = RequestMethod.POST)
+    public String processRemoveCheeseForm(@RequestParam int[] postIds) {
+
+        for (int postId : postIds) {
+            postDao.delete(postId); //cascading delete needed?//
+        }
+
+        return "redirect:";
     }
 }
