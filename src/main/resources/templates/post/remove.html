@@ -1,10 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:fragment="head">
+    <meta charset="UTF-8"/>
+    <title>Remove Posts</title>
 </head>
 <body>
+
+<h1 th:text="${title}">Default Title</h1>
+
+<form method="post">
+
+    <div th:each="post : ${posts}">
+        <input type="checkbox" name="postIds" th:value="${post.postId}" th:id="${post.postId}"/>
+        <label th:for="${post.postId}" th:text="${post.title}"></label>
+        <br />
+    </div>
+
+    <input type="submit" value="Remove Post" />
+</form>
 
 </body>
 </html>

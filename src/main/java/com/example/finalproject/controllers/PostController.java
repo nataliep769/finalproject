@@ -42,7 +42,7 @@ public class PostController {
         model.addAttribute("title", "Posted!");
         postDao.save(newPost);
 
-        return "post/index";
+        return "redirect:";
 
     }
     @RequestMapping(value = "edit/{postId}", method = RequestMethod.GET)
@@ -51,23 +51,15 @@ public class PostController {
         return "post/edit";
     }
 
-    @RequestMapping(value = "edit", method = RequestMethod.POST)
-    public String processEditForm(int postId, String title, String headline, String textBody) {
+    @RequestMapping(value = "edit/{postId}", method = RequestMethod.POST)
+    public String processEditForm(@PathVariable int postId, Model model, String title, String headline, String textBody) {
         Post post = postDao.findOne(postId);
         post.setHeadline(headline);
         post.setTextBody(textBody);
         post.setTitle(title);
-
-        return "post/index";
-    }
-
-    @RequestMapping(value = "view/{postId}", method = RequestMethod.GET)
-    public String viewMenuForm(@PathVariable int postId, Model model) { //remember the importance of setting a path variable -- sets up the URL //
-        Post post = postDao.findOne(postId);;
-
-        model.addAttribute("title", post.getTitle());
+        postDao.save(post);
         model.addAttribute("post", post);
-
+        //Add new post to the model?
         return "post/view";
     }
 
@@ -87,4 +79,15 @@ public class PostController {
 
         return "redirect:";
     }
+
+    @RequestMapping(value = "view/{postId}", method = RequestMethod.GET)
+    public String viewMenuForm(@PathVariable int postId, Model model) { //remember the importance of setting a path variable -- sets up the URL //
+        Post post = postDao.findOne(postId);;
+
+        model.addAttribute("title", post.getTitle());
+        model.addAttribute("post", post);
+
+        return "post/view";
+    }
+
 }

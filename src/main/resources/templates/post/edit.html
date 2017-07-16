@@ -14,26 +14,27 @@
 </head>
 
 <body>
-<h1 th:text="${title}">Default Title</h1>
-<form method="post" th:object="${post}"> <!-- "action" changes the url of the post-->
+    <h1 th:text="${title}">Default Title</h1>
+    <form method="post" th:object="${post}"> <!-- "action" changes the url of the post-->
 
-    <div>
-        <label th:for="title">Title</label>
-        <input type="text" th:field="*{title}" th:value="*{title}"/>
-        <span th:errors="*{title}"></span>
-    </div>
-    <div>
-        <label th:for="headline">Headline</label>
-        <input type="text" th:field="*{headline}" value="*{headline}"/>
-        <span th:errors="*{headline}"></span>
-    </div>
-    <div>
-        <label th:for="textBody">New Post</label>
-        <textarea id="mytextarea" th:field="*{textBody}" th:value="*{textBody}"></textarea>
-    </div>
-    <input type="hidden" th:value="${post.postId}" name="postId" />
-    <input type="submit" value="Submit new post"/>
+        <div>
+            <label th:for="title">Title</label>
+            <input type="text" th:field="*{title}" th:value="*{title}"/>
+            <span th:errors="*{title}"></span>
+        </div>
+        <div>
+            <label th:for="headline">Headline</label>
+            <input type="text" th:field="*{headline}" value="*{headline}"/>
+            <span th:errors="*{headline}"></span>
+        </div>
+        <div>
+            <label th:for="textBody">New Post</label>
+            <textarea id="mytextarea" th:field="*{textBody}" th:value="*{textBody}"></textarea>
+        </div>
 
-</form>
+        <input type="hidden" th:value="*{postId}" name="postId" />
+        <input type="submit" value="Submit new post"/>
+
+    </form>
 </body>
 </html>

@@ -10,6 +10,11 @@
         <h2 th:text="${post.title}"></h2>
         <h3 th:text="${post.headline}"></h3>
         <div th:utext="${post.textBody}"></div> <!-- USING UTEXT ALLOWS THE COMPUTER TO CORRECTLY INTERPRET THE HTML MARKUP FROM THE RICH TEXT EDITOR -->
+        <a th:href="'/post/edit/' + ${post.postId}" th:text="Edit"></a>
     </div>
+    <tr>
+        <a href="/post/add">Add</a> |
+        <a href="/post/remove">Remove</a>
+    </tr>
 </body>
 </html>
