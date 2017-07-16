@@ -16,12 +16,14 @@ public class Post {
     @GeneratedValue
     private int postId;
 
-    //@Size(min=5, max=25)
+    @NotNull
+    @Size(min=5, max=25)
     private String title;
 
+    @Size(min=1)
     private String textBody;
 
-    //@Size(min=10, max=50)
+    @Size(min=10, max=50)
     private String headline;
 
     //Here I would create a field for the image. Do I need to create

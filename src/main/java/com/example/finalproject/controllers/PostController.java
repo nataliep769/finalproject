@@ -38,6 +38,12 @@ public class PostController {
     public String processAddPostForm(@ModelAttribute @Valid Post newPost,
                                      Errors errors, Model model) {
 
+        if (errors.hasErrors()) {
+            model.addAttribute("title", "Make a new post");
+            model.addAttribute("textError", "Must enter text");
+            return "post/add";
+        }
+
         model.addAttribute("posts", postDao.findAll());
         model.addAttribute("title", "Posted!");
         postDao.save(newPost);
