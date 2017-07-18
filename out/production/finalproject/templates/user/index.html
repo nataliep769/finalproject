@@ -2,16 +2,17 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/"> <!-- need to connect to Thymeleaf in order for this to work -->
 <head th:fragment="head">
     <meta charset="UTF-8"/>
-    <title th:text="${title}">The Index</title>
+    <title>Login</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 </head>
-<body>
+<body class="container">
+<div>
+    <h1 th:text="${title}">Default Title</h1>
 
-<nav th:fragment="navigation">
-    <a href="/cheese">Home</a> |
-    <a href="/category">Categories</a> |
-    <a href="/menu">Menus</a>
-</nav>
+    <p th:text="${'Welcome ' + user.username}"></p>
 
+</div>
 </body>
 </html>

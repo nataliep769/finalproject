@@ -54,6 +54,7 @@ public class PostController {
     @RequestMapping(value = "edit/{postId}", method = RequestMethod.GET)
     public String displayEditForm(Model model, @PathVariable int postId) {
         model.addAttribute("post", postDao.findOne(postId));
+        model.addAttribute("title", "Edit Post");
         return "post/edit";
     }
 

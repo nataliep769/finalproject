@@ -23,7 +23,7 @@ public class Post {
     @Size(min=1)
     private String textBody;
 
-    @Size(min=10, max=50)
+    @Size(min=10, max=100)
     private String headline;
 
     //Here I would create a field for the image. Do I need to create

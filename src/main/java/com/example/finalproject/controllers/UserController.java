@@ -3,6 +3,7 @@ package com.example.finalproject.controllers;
 import com.example.finalproject.models.User;
 import com.example.finalproject.models.data.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -41,6 +42,7 @@ public class UserController {
                                      Errors errors, Model model, String verify) {
 
         if (errors.hasErrors()) {
+            model.addAttribute("title", "New User Form");
             return "user/add";
         }
 
@@ -53,7 +55,16 @@ public class UserController {
         }
 
         if (passwordsMatch) {
-            userDao.save(newUser);
+
+            String password_hash = BCrypt.hashpw(newUser.getPassword(), BCrypt.gensalt());
+            String username = newUser.getUsername();
+            String verify_hash = BCrypt.hashpw(newUser.getPassword(), BCrypt.gensalt());
+            String email = newUser.getEmail();
+            //
+            User hashedUser = new User(username, password_hash, verify_hash, email);
+            //Update newUser with new values?
+            userDao.save(hashedUser); //need to save the new user with the hashed password
+            model.addAttribute("title", "User added!");
             return "user/index";
         }
 
@@ -73,17 +84,17 @@ public class UserController {
     @RequestMapping(value = "login", method = RequestMethod.POST) //change the mapping value?//
     public String processLoginForm(@ModelAttribute @Valid User user, Errors errors, Model model) {
         model.addAttribute("title", "Login");
-        //look up how to make queries with CRUD repository and Spring boot. Check out Spring Security//
         List<User> users = (List<User>) userDao.findAll(); //Iterate over a list of users of type User == a user database object, converted to a list of users that can be iterated through.
         //Boolean wasFound = false;
+
+        //Will have to check if the user.getPassword input equals the unhashed password
         for (User dbUser : users) {
             if (user.getUsername().equals(dbUser.getUsername()) && user.getPassword().equals(dbUser.getPassword())) { //told by a friend this isn't secure, but it works for
                 if (user.getUsername().equals("GoodOldNeon")) {
                     return "user/admin"; //Have yet to create this template//
                 }
                 model.addAttribute("title", "Logged in!");
-                return "user/index"; //this returns the user/index template, but the RequestMapping maps us to the URL of /login
-                //  return //a page that welcomes the user, or send them to the home page of Between the Notes//
+                return "user/index";
             } else {
                 model.addAttribute("error", "Incorrect password");
             }

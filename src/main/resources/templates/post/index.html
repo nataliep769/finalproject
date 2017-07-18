@@ -3,18 +3,18 @@
 <head th:fragment="head">
     <meta charset="UTF-8"/>
     <title>My Posts</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
-<body>
+<body class="container">
     <h1 th:text="${title}">Default Title</h1>
+    <nav th:replace="fragments :: navigation"></nav>
+    <br />
     <div th:each="post : ${posts}">
         <h2 th:text="${post.title}"></h2>
         <h3 th:text="${post.headline}"></h3>
         <div th:utext="${post.textBody}"></div> <!-- USING UTEXT ALLOWS THE COMPUTER TO CORRECTLY INTERPRET THE HTML MARKUP FROM THE RICH TEXT EDITOR -->
-        <a th:href="'/post/edit/' + ${post.postId}" th:text="Edit"></a>
+        <a th:href="'/post/edit/' + ${post.postId}" th:text="EDIT"></a>
     </div>
-    <tr>
-        <a href="/post/add">Add</a> |
-        <a href="/post/remove">Remove</a>
-    </tr>
 </body>
 </html>
