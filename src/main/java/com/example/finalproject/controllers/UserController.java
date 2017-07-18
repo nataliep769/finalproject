@@ -89,7 +89,7 @@ public class UserController {
 
         //Will have to check if the user.getPassword input equals the unhashed password
         for (User dbUser : users) {
-            if (user.getUsername().equals(dbUser.getUsername()) && user.getPassword().equals(dbUser.getPassword())) { //told by a friend this isn't secure, but it works for
+            if (user.getUsername().equals(dbUser.getUsername()) && BCrypt.checkpw(user.getPassword(), dbUser.getPassword())) { //told by a friend this isn't secure, but it works for
                 if (user.getUsername().equals("GoodOldNeon")) {
                     return "user/admin"; //Have yet to create this template//
                 }

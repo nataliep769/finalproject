@@ -22,13 +22,14 @@ public class User {
     @Size(min=3, max=20)
     private String username;
 
-    //@NotNull
+    @NotNull
     //@Size(min=8, max=18)
     private String password;
 
     @NotNull
     private String verify;
 
+    @NotNull
     @Email
     private String email;
 
