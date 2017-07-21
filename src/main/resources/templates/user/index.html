@@ -13,6 +13,11 @@
 
     <p th:text="${'Welcome ' + user.username}"></p>
 
+
+    <nav th:fragment="navigation" class="navbar-header">
+        <a href="/user/login">LOGIN</a>
+    </nav>
+
 </div>
 </body>
 </html>

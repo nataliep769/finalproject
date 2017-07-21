@@ -41,6 +41,17 @@ public class UserController {
     public String processAddUserForm(@ModelAttribute @Valid User newUser,
                                      Errors errors, Model model, String verify) {
 
+        List<User> users = (List<User>) userDao.findAll();
+
+        for (User dbUser : users) {
+            if (newUser.getUsername().equals(dbUser.getUsername())) {
+                model.addAttribute("title", "New User Form");
+                model.addAttribute("usernameError", "That username is taken. Please choose another");
+                return "user/add";
+            }
+        }
+
+
         if (errors.hasErrors()) {
             model.addAttribute("title", "New User Form");
             return "user/add";
@@ -60,8 +71,9 @@ public class UserController {
             String username = newUser.getUsername();
             String verify_hash = BCrypt.hashpw(newUser.getPassword(), BCrypt.gensalt());
             String email = newUser.getEmail();
+            boolean administrator = false;
             //
-            User hashedUser = new User(username, password_hash, verify_hash, email);
+            User hashedUser = new User(username, password_hash, verify_hash, email, administrator);
             //Update newUser with new values?
             userDao.save(hashedUser); //need to save the new user with the hashed password
             model.addAttribute("title", "User added!");
@@ -89,14 +101,13 @@ public class UserController {
 
         //Will have to check if the user.getPassword input equals the unhashed password
         for (User dbUser : users) {
-            if (user.getUsername().equals(dbUser.getUsername()) && BCrypt.checkpw(user.getPassword(), dbUser.getPassword())) { //told by a friend this isn't secure, but it works for
-                if (user.getUsername().equals("GoodOldNeon")) {
-                    return "user/admin"; //Have yet to create this template//
-                }
+            if (user.getUsername().equals(dbUser.getUsername()) && BCrypt.checkpw(user.getPassword(), dbUser.getPassword())) {
+
                 model.addAttribute("title", "Logged in!");
                 return "user/index";
+
             } else {
-                model.addAttribute("error", "Incorrect password");
+                model.addAttribute("error", "Invalid username and/or password");
             }
         }
         return "user/login";

@@ -1,6 +1,7 @@
 package com.example.finalproject.models;
 
 import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,28 +20,37 @@ public class User {
     private int userId;
 
     @NotNull
-    @Size(min=3, max=20)
+    @Size(min=7, message = "Username must be at least 7 characters")
     private String username;
 
     @NotNull
-    //@Size(min=8, max=18)
+    @Size(min=8, message = "Password must be at least 8 characters")
     private String password;
 
-    @NotNull
     private String verify;
 
-    @NotNull
     @Email
     private String email;
+
+    private boolean isAdministrator;
 
     public User() {
     }
 
-    public User(String username, String password, String verify, String email) {
+    public User(String username, String password, String verify, String email, boolean isAdministrator) {
         this.username = username;
         this.password = password;
         this.verify = verify;
         this.email = email;
+        this.isAdministrator = false;
+    }
+
+    public boolean isAdministrator() {
+        return isAdministrator;
+    }
+
+    public void setAdministrator(boolean administrator) {
+        isAdministrator = administrator;
     }
 
     public int getUserId() {

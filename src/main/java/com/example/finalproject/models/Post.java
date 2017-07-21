@@ -14,7 +14,7 @@ import javax.validation.constraints.Size;
 public class Post {
     @Id
     @GeneratedValue
-    private int postId;
+    private int postId; //WHY AREN'T MY VALIDATION ERRORS WORKIIIIING :) :(
 
     @NotNull
     @Size(min=5, max=25)
