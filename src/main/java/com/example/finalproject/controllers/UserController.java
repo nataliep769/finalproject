@@ -9,6 +9,9 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
+
 import javax.validation.Valid;
 import java.util.List;
 
@@ -17,7 +20,6 @@ import java.util.List;
  * Created by Natalie on 7/1/2017.
  */
 @Controller
-@RequestMapping("user")
 public class UserController {
 
     @Autowired
@@ -86,7 +88,9 @@ public class UserController {
     }
 
     @RequestMapping(value = "login", method = RequestMethod.GET)
-    public String displayLoginUserForm(Model model) {
+    public String displayLoginUserForm(@CookieValue(name = "id", required = false) String userIdCookie, //Set required == true for other pages?
+                                       @CookieValue(name = "password", required = false) String passwordCookie,
+                                       Model model) {
 
         model.addAttribute("title", "Login");
         model.addAttribute("user", new User());
@@ -94,14 +98,23 @@ public class UserController {
     }
 
     @RequestMapping(value = "login", method = RequestMethod.POST) //change the mapping value?//
-    public String processLoginForm(@ModelAttribute @Valid User user, Errors errors, Model model) {
+    public String processLoginForm(@ModelAttribute @Valid User user, Errors errors, Model model, @CookieValue(name = "id", required = false) String userIdCurrent,
+                                   @CookieValue(name = "password", required = false) String passwordCurrent, //passwordCurrent is the Cookie Value//
+                                   HttpServletResponse response) {
+
         model.addAttribute("title", "Login");
         List<User> users = (List<User>) userDao.findAll(); //Iterate over a list of users of type User == a user database object, converted to a list of users that can be iterated through.
-        //Boolean wasFound = false;
 
-        //Will have to check if the user.getPassword input equals the unhashed password
         for (User dbUser : users) {
             if (user.getUsername().equals(dbUser.getUsername()) && BCrypt.checkpw(user.getPassword(), dbUser.getPassword())) {
+
+                int userId = dbUser.getUserId();
+
+                Cookie userIdCookie = new Cookie("id", Integer.toString(userId));
+                Cookie passwordCookie = new Cookie("password", user.getPassword());
+
+                response.addCookie(userIdCookie); //the cookie is being added to the HTTP Servlet Response //
+                response.addCookie(passwordCookie); //the cookies is added in the post method//
 
                 model.addAttribute("title", "Logged in!");
                 return "user/index";
@@ -110,6 +123,20 @@ public class UserController {
                 model.addAttribute("error", "Invalid username and/or password");
             }
         }
+        return "user/login";
+    }
+
+    @RequestMapping(value = "logout", method = RequestMethod.GET)
+    public String logOutUser(HttpServletResponse response, Model model) {
+
+        // Set the current cookie values to empty.
+        response.addCookie(new Cookie("id", ""));
+        response.addCookie(new Cookie("password", ""));
+        
+        model.addAttribute("title", "Logged out!");
+        model.addAttribute("logOutConfirm", "You have been logged out successfully!");
+        model.addAttribute("user", new User());
+
         return "user/login";
     }
 }

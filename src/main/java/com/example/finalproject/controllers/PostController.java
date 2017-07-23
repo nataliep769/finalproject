@@ -19,15 +19,25 @@ public class PostController {
     private PostDao postDao;
 
     @RequestMapping(value = "")
-    public String index(Model model) {
+    public String index(Model model) { //will need to add User in here//
 
         model.addAttribute("posts", postDao.findAll());
         model.addAttribute("title", "All Posts");
         return "post/index";
     }
 
+    @RequestMapping(value = "blog")
+    public String blog(Model model) { //will need to add User in here//
+
+        model.addAttribute("posts", postDao.findAll());
+        model.addAttribute("title", "Between the Notes");
+        return "post/blog";
+    }
+
     @RequestMapping(value = "add", method = RequestMethod.GET)
     public String displayAddPostForm(Model model) {
+
+        //do I need to select the user from the database users? if user.getUsername == or .equals administrator//
 
         model.addAttribute("title", "Make a new post");
         model.addAttribute("post", new Post());
