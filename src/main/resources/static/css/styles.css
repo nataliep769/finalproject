@@ -133,7 +133,17 @@ ul.navbar-nav {
 
 /***** Top content *****/
 
-.top-content { padding: 70px 0 100px 0; }
+.top-content {
+    background-image:
+      url(http://www.deutschegrammophon.com/gb/html/special/hahn-ives/images/background.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover; /*Keeps background image scaling appropriately. Alternatively can change this to background: contain; --MAY NEED TO CHANGE THIS FOR MOBILE/TABLET responsiveness */
+    height: 870px; /*This was key: creating a fixed height to the background image. Creating a seperate container was also important. */
+    margin: 0px;
+    padding: 70px 0 100px 0;
+    }
 
 .top-content .text { color: #fff; }
 .top-content .text h1 { color: #fff; }
