@@ -27,7 +27,7 @@ public class PostController {
     }
 
     @RequestMapping(value = "blog")
-    public String blog(Model model) { //will need to add User in here//
+    public String blog(@CookieValue(name = "id", required = true) String userIdCookie, Model model) { //will need to add User in here//
 
         model.addAttribute("posts", postDao.findAll());
         model.addAttribute("title", "Between the Notes");

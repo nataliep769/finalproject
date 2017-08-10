@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+    <head th:fragment="head">
+        <meta charset="UTF-8"/>
+        <title th:text="${title}"></title>
+        <link rel="stylesheet" type="text/css" href="C:\Users\Natalie\code\finalproject\src\main\resources\templates\user\styles.css"/>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,700"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    </head>
+    <body>
+
+        <nav th:fragment="navigation" class="navbar-header">
+            <a href="/post">ALL POSTS</a> |
+            <a href="/post/add">ADD</a> |
+            <a href="/post/remove">REMOVE</a>
+        </nav>
+
+    </body>
+</html>

@@ -14,16 +14,16 @@ import javax.validation.constraints.Size;
 public class Post {
     @Id
     @GeneratedValue
-    private int postId; //WHY AREN'T MY VALIDATION ERRORS WORKIIIIING :) :(
+    private int postId;
 
     @NotNull
-    @Size(min=5, max=25)
+    @Size(max=40)
     private String title;
 
     @Size(min=1)
     private String textBody;
 
-    @Size(min=10, max=100)
+    @Size(max=100)
     private String headline;
 
     //Here I would create a field for the image. Do I need to create

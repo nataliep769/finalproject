@@ -30,6 +30,7 @@ public class User {
     private String verify;
 
     @Email
+    @NotEmpty(message = "Please enter a valid email address")
     private String email;
 
     private boolean isAdministrator;
