@@ -32,6 +32,9 @@ h3 {
 
 img { max-width: 100%; }
 
+.error {
+    color: white;
+}
 .medium-paragraph {
 	font-size: 18px;
 	line-height: 32px;

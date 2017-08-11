@@ -33,26 +33,26 @@
                             <div class="form-group">
                                 <label class="sr-only" th:for="username">Username</label>
                                 <input placeholder="Username..." th:field="*{username}"/>
-                                <span th:errors="*{username}" class="alert alert-danger"></span>
+                                <p class="error" th:errors="*{username}"></p>
                             </div>
                             <p th:text="${usernameError}"></p>
                             <div class="form-group">
                                 <label class="sr-only" th:for="password">Password</label>
                                 <input placeholder="Enter password..." type="password" th:field="*{password}"/>
-                                <span th:errors="*{password}" class="alert alert-danger"></span>
+                                <p class="error" th:errors="*{password}"></p>
                             </div>
                             <div class="form-group">
                                 <label class="sr-only" th:for="verify">Verify</label>
                                 <input placeholder="Verify password..." type="password" th:field="*{verify}"/>
-                                <span th:errors="*{verify}" class="alert alert-danger"></span>
+                                <p class="error" th:errors="*{verify}"></p>
                             </div>
                             <div class="form-group">
                                 <label class="sr-only" th:for="email">Email</label>
                                 <input placeholder="Email..." type="email" th:field="*{email}"/>
-                                <span th:errors="*{email}" class="alert alert-danger"></span>
+                                <p class="error" th:errors="*{email}"></p>
                             </div>
 
-                            <p th:text="${verifyError}"></p>
+                            <p class="error" th:text="${verifyError}"></p>
 
                             <input type="submit" value="Add User"/>
                         </form>

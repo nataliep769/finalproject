@@ -1,22 +1,51 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/"> <!-- need to connect to Thymeleaf in order for this to work -->
-    <head th:replace="fragments :: head"></head>
-    <body class="container">
-    <h1 th:text="${title}">Default Title</h1>
-    <form method="post" style="max-width:600px;" th:object="${user}">
+    <head>
+        <meta charset="UTF-8"/>
+        <title th:text="${title}"></title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,700"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}"/>
+    </head>
+    <body>
+    <div class="top-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2 text">
+                    <h1 class="wow fadeInLeftBig">Between the Notes</h1>
+                    <div class="description wow fadeInLeftBig">
+                        <p>
+                            A classical music blog devoted to exploring the intrapersonal struggles and triumphs of performers.
+                        </p>
+                    </div>
+                </div>
+            </div>
 
-        <div class="form-group">
-            <label th:for="username">Username</label>
-            <input type="text" th:field="*{username}" th:value="*{userId}"/>
-            <span th:errors="*{username}"></span>
-        </div>
-        <div class="form-group">
-            <label th:for="password">Password</label>
-            <input type="password" th:field="*{password}"/>
-        </div>
-        <p th:text="${error}"></p>
-        <input type="submit" value="Login"/>
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3 r-form-1-box wow fadeInUp">
+                    <div class="r-form-1-top">
+                        <div class="r-form-1-top-left">
+                            <h3>Login</h3>
+                        </div>
+                    </div>
+                    <div class="r-form-1-bottom">
+                        <form method="post" style="max-width:600px;" th:object="${user}">
 
-    </form>
+                            <div class="form-group">
+                                <label th:for="username"></label>
+                                <input placeholder="Username..." th:field="*{username}" th:value="*{userId}"/>
+                            </div>
+                            <div class="form-group">
+                                <label th:for="password"></label>
+                                <input placeholder="Password..." type="password" th:field="*{password}"/>
+                            </div>
+                            <p class="error" th:text="${error}"></p>
+                            <input type="submit" value="Login"/>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     </body>
 </html>
