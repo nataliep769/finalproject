@@ -17,13 +17,13 @@ public class Post {
     private int postId;
 
     @NotNull
-    @Size(max=40)
+    @Size
     private String title;
 
-    @Size(min=1)
+    @Size
     private String textBody;
 
-    @Size(max=100)
+    @Size
     private String headline;
 
     //Here I would create a field for the image. Do I need to create

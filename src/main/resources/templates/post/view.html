@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head th:fragment="head">
+<head>
     <meta charset="UTF-8"/>
     <title th:text="${post.title}"></title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,700"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/styles.css}"/>
 </head>
 <body>
     <h1 th:text="${title}">Default Title</h1>

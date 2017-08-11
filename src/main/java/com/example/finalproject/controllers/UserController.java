@@ -43,7 +43,8 @@ public class UserController {
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
     public String processAddUserForm(@ModelAttribute @Valid User newUser,
-                                     Errors errors, Model model, String verify) {
+                                     Errors errors, Model model, String verify, @CookieValue(name = "id", required = false) String userIdCurrent,
+                                     HttpServletResponse response) {
 
         List<User> users = (List<User>) userDao.findAll();
 
@@ -76,22 +77,27 @@ public class UserController {
             String verify_hash = BCrypt.hashpw(newUser.getPassword(), BCrypt.gensalt());
             String email = newUser.getEmail();
             boolean administrator = false;
-            //
+
             User hashedUser = new User(username, password_hash, verify_hash, email, administrator);
-            //Update newUser with new values?
-            userDao.save(hashedUser); //need to save the new user with the hashed password
-            model.addAttribute("title", "User added!");
-            return "user/index";
+
+            userDao.save(hashedUser);
+
+            int userId = hashedUser.getUserId();
+
+            Cookie userIdCookie = new Cookie("id", Integer.toString(userId));
+
+            response.addCookie(userIdCookie);
+
+            model.addAttribute("title", "Between the Notes");
+            return "post/blog"; //change this//
         }
 
         model.addAttribute("title", "New User Form");
         return "user/add";
-        //check to make sure all of the libraries in other files are imported when reopening IntelliJ//
     }
 
     @RequestMapping(value = "login", method = RequestMethod.GET)
-    public String displayLoginUserForm(@CookieValue(name = "id", required = false) String userIdCookie, //Set required == true for other pages?
-                                       @CookieValue(name = "password", required = false) String passwordCookie,
+    public String displayLoginUserForm(@CookieValue(name = "id", required = false) String userIdCookie,
                                        Model model) {
 
         model.addAttribute("title", "Login");
@@ -99,12 +105,12 @@ public class UserController {
         return "user/login";
     }
 
-    @RequestMapping(value = "login", method = RequestMethod.POST) //change the mapping value?//
+    @RequestMapping(value = "login", method = RequestMethod.POST)
     public String processLoginForm(@ModelAttribute @Valid User user, Errors errors, Model model, @CookieValue(name = "id", required = false) String userIdCurrent,
                                    HttpServletResponse response) {
 
         model.addAttribute("title", "Login");
-        List<User> users = (List<User>) userDao.findAll(); //Iterate over a list of users of type User == a user database object, converted to a list of users that can be iterated through.
+        List<User> users = (List<User>) userDao.findAll();
 
         for (User dbUser : users) {
             if (user.getUsername().equals(dbUser.getUsername()) && BCrypt.checkpw(user.getPassword(), dbUser.getPassword())) {
@@ -115,8 +121,8 @@ public class UserController {
 
                 response.addCookie(userIdCookie);
 
-                model.addAttribute("title", "Logged in!");
-                return "user/index";
+                model.addAttribute("title", "Between the Notes");
+                return "post/blog";
 
             } else {
                 model.addAttribute("error", "Invalid username and/or password");

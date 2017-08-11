@@ -2,7 +2,7 @@ body {
     font-family: 'Raleway', sans-serif;
     font-size: 15px;
     font-weight: 400;
-    color: red;
+    color: gray;
     line-height: 30px;
     text-align: center;
 }
@@ -32,6 +32,9 @@ h3 {
 
 img { max-width: 100%; }
 
+.error {
+    color: white;
+}
 .medium-paragraph {
 	font-size: 18px;
 	line-height: 32px;
@@ -133,7 +136,17 @@ ul.navbar-nav {
 
 /***** Top content *****/
 
-.top-content { padding: 70px 0 100px 0; }
+.top-content {
+    background-image:
+      url(http://www.deutschegrammophon.com/gb/html/special/hahn-ives/images/background.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    height: auto;
+    margin: 0px;
+    padding: 70px 0 100px 0;
+    }
 
 .top-content .text { color: #fff; }
 .top-content .text h1 { color: #fff; }
