@@ -43,7 +43,7 @@
         <div class="row">
             <div class="col-lg-8 col-md-10 mx-auto">
                 <div class="post-preview" th:each="post : ${posts}">
-                    <a href="'/post/view/' + ${post.postId}"> <!-- will need to change this to the post's id number -->
+                    <a th:href="'/post/view/' + ${post.postId}"> <!-- will need to change this to the post's id number -->
                         <h2 class="post-title" th:text="${post.title}"></h2>
                         <h3 class="post-subtitle" th:text="${post.headline}"></h3>
                     </a>

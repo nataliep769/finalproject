@@ -3,14 +3,35 @@
 <head>
     <meta charset="UTF-8"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,700"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/homestyles.css}"/>
 </head>
-<body class="container">
-    <h1 th:text="${title}">Default Title</h1>
+<body>
 
-    <h2 th:text="${post.title}"></h2>
-    <h3 th:text="${post.headline}"></h3>
-    <div th:utext="${post.textBody}"></div>
+<header class="masthead" style="background-image: url('http://assets.classicfm.com/2012/42/berlin-philharmonie-1350490396.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="post-heading">
+                    <h1 th:text="${post.title}" ></h1>
+                    <h2 th:text="${post.headline}" class="subheading"></h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div th:utext="${post.textBody}"></div>
+            </div>
+        </div>
+    </div>
+</article>
 
 </body>
 </html>
