@@ -1,11 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/"> <!-- need to connect to Thymeleaf in order for this to work -->
-<head>
-    <meta charset="UTF-8"/>
-    <title th:text="${title}"></title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,700"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}"/>
+<head th:replace="fragments :: head">
 </head>
     <body>
     <div class="top-content">

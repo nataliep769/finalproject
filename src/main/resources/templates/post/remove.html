@@ -1,26 +1,23 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head th:fragment="head">
+<head>
     <meta charset="UTF-8"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <title>Remove Posts</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,700"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
 </head>
 <body class="container">
 
 <h1 th:text="${title}">Default Title</h1>
 
-<form method="post">
+    <form method="post">
 
-    <div th:each="post : ${posts}" class="checkbox">
-        <input type="checkbox" name="postIds" th:value="${post.postId}" th:id="${post.postId}"/>
-        <label th:for="${post.postId}" th:text="${post.title}"></label>
-        <br />
-    </div>
+        <div th:each="post : ${posts}" class="checkbox">
+            <input type="checkbox" name="postIds" th:value="${post.postId}" th:id="${post.postId}"/>
+            <label th:for="${post.postId}" th:text="${post.title}"></label>
+            <br />
+        </div>
 
-    <input type="submit" value="Remove Post" />
-</form>
-<br />
-<nav th:replace="fragments :: navigation"></nav>
+        <input type="submit" value="Remove Post" />
+    </form>
 </body>
 </html>

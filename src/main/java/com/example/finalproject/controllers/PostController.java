@@ -39,7 +39,7 @@ public class PostController {
 
         //do I need to select the user from the database users? if user.getUsername == or .equals administrator//
 
-        model.addAttribute("title", "Make a new post");
+        model.addAttribute("title", "New Post");
         model.addAttribute("post", new Post());
         return "post/add";
     }
@@ -91,14 +91,14 @@ public class PostController {
     public String processRemoveCheeseForm(@RequestParam int[] postIds) {
 
         for (int postId : postIds) {
-            postDao.delete(postId); //cascading delete needed?//
+            postDao.delete(postId);
         }
 
         return "redirect:";
     }
 
     @RequestMapping(value = "view/{postId}", method = RequestMethod.GET)
-    public String viewMenuForm(@PathVariable int postId, Model model) { //remember the importance of setting a path variable -- sets up the URL //
+    public String viewMenuForm(@PathVariable int postId, Model model) {
         Post post = postDao.findOne(postId);;
 
         model.addAttribute("title", post.getTitle());

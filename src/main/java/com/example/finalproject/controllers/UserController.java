@@ -1,6 +1,7 @@
 package com.example.finalproject.controllers;
 
 import com.example.finalproject.models.User;
+import com.example.finalproject.models.data.PostDao;
 import com.example.finalproject.models.data.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCrypt;
@@ -26,6 +27,9 @@ public class UserController {
 
     @Autowired
     private UserDao userDao;
+
+    @Autowired
+    private PostDao postDao;
 
     @RequestMapping(value = "")
     public String index() {
@@ -88,6 +92,7 @@ public class UserController {
 
             response.addCookie(userIdCookie);
 
+            model.addAttribute("posts", postDao.findAll());
             model.addAttribute("title", "Between the Notes");
             return "post/blog"; //change this//
         }
@@ -122,6 +127,7 @@ public class UserController {
                 response.addCookie(userIdCookie);
 
                 model.addAttribute("title", "Between the Notes");
+                model.addAttribute("posts", postDao.findAll());
                 return "post/blog";
 
             } else {

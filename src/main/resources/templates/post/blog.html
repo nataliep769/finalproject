@@ -1,21 +1,48 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/"> <!-- need to connect to Thymeleaf in order for this to work -->
-<head th:fragment="head">
+<head>
     <meta charset="UTF-8"/>
-    <title>Between the Notes</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title th:text="${title}"></title>
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/homestyles.css}"/>
 </head>
-<body class="container">
-<h1 th:text="${title}">Default Title</h1>
-<div th:each="post : ${posts}">
-    <h2 th:text="${post.title}"></h2>
-    <h3 th:text="${post.headline}"></h3>
-    <div th:utext="${post.textBody}"></div> <!-- USING UTEXT ALLOWS THE COMPUTER TO CORRECTLY INTERPRET THE HTML MARKUP FROM THE RICH TEXT EDITOR -->
-</div>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <header class="masthead" style="background-image: url(https://paolabottomley.files.wordpress.com/2012/12/hands-on-the-pianos-keys1.jpg)">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <div class="site-heading">
+                        <h1>Between the Notes</h1>
+                        <span class="subheading">A Classical Music Blog</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
 
-<nav th:fragment="navigation" class="navbar-header">
-    <a href="/logout">LOGOUT</a>
-</nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="post-preview" th:each="post : ${posts}">
+                    <a href="post.html"> <!-- will need to change this to the post's id number -->
+                        <h2 class="post-title" th:text="${post.title}"></h2>
+                        <h3 class="post-subtitle" th:text="${post.headline}"></h3>
+                    </a>
+                </div>
+                <hr/>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
