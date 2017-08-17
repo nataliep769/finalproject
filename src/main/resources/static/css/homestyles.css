@@ -176,7 +176,9 @@ header.masthead {
     text-align: center; }
     header.masthead .page-heading h1,
     header.masthead .site-heading h1 {
-      font-size: 30px;
+      font-size: 26px;
+      text-transform: uppercase;
+      letter-spacing: .5em;
       margin-top: 0; }
     header.masthead .page-heading .subheading,
     header.masthead .site-heading .subheading {
@@ -184,6 +186,7 @@ header.masthead {
       font-weight: lighter;
       line-height: 1.1;
       display: block;
+      letter-spacing: .5em;
       margin: 10px 0 0;
       font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
       text-align: center;
@@ -192,9 +195,11 @@ header.masthead {
     @media only screen and (min-width: 768px) {
       header.masthead .page-heading h1,
       header.masthead .site-heading h1 {
-        font-size: 40px; } }
+        font-size: 26px;
+         letter-spacing: .5em;
+         } }
   header.masthead .post-heading h1 {
-    font-size: 24px;
+    font-size: 28px;
     text-transform: uppercase;
     letter-spacing: .1em;
     font-weight: lighter;
@@ -202,11 +207,13 @@ header.masthead {
   header.masthead .post-heading .meta,
   header.masthead .post-heading .subheading {
     line-height: 1.1;
+    letter-spacing: .1em;
     display: block; }
   header.masthead .post-heading .subheading {
     font-size: 18px;
     font-weight: lighter;
     margin: 10px 0 30px;
+    letter-spacing: .1em;
     text-transform: uppercase;
     font-family: 'Cardo'; }
   header.masthead .post-heading .meta {
@@ -218,8 +225,9 @@ header.masthead {
       color: white; }
   @media only screen and (min-width: 768px) {
     header.masthead .post-heading h1 {
-      font-size: 30px; }
+      font-size: 28px; }
     header.masthead .post-heading .subheading {
+      letter-spacing: .1em;
       font-size: 18px; } }
 
 .post-preview > a {
