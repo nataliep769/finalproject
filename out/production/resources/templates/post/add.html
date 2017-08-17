@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/"> <!-- need to connect to Thymeleaf in order for this to work -->
-<head th:fragment="head">
+<head>
     <meta charset="UTF-8"/>
         <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=ng1pbr0v1awiri4ewz2gzpdhx66afsx7s7w8flc6mn8aljym"></script>
      <script type="text/javascript">
@@ -33,12 +33,12 @@
 
         <div>
             <label th:for="title">Title</label>
-            <input type="text" th:field="*{title}"/>
+            <input th:field="*{title}"/>
             <span th:errors="*{title}" class="error"></span>
         </div>
         <div>
             <label th:for="headline">Headline</label>
-            <input type="text" th:field="*{headline}"/>
+            <input th:field="*{headline}"/>
             <span th:errors="*{headline}" class="error"></span>
         </div>
         <div>

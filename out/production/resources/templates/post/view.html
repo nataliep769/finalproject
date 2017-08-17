@@ -2,17 +2,36 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8"/>
-    <title th:text="${post.title}"></title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,700"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
-    <link rel="stylesheet" type="text/css" th:href="@{/styles.css}"/>
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Cardo" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/homestyles.css}"/>
 </head>
 <body>
-    <h1 th:text="${title}">Default Title</h1>
 
-    <h2 th:text="${post.title}"></h2>
-    <h3 th:text="${post.headline}"></h3>
-    <div th:utext="${post.textBody}"></div>
+<header class="masthead" style="background-image: url('http://assets.classicfm.com/2012/42/berlin-philharmonie-1350490396.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="post-heading">
+                    <h1 th:text="${post.title}" ></h1>
+                    <h2 th:text="${post.headline}" class="subheading"></h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div th:utext="${post.textBody}"></div>
+            </div>
+        </div>
+    </div>
+</article>
 
 </body>
 </html>
