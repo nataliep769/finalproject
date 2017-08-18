@@ -9,8 +9,10 @@ body {
   font-family: 'Cardo', 'Times New Roman', serif; }
 
 p {
-  line-height: 1.5;
-  margin: 30px 0; }
+  line-height: 1.75em;
+  margin: 30px 0;
+  font-size: 16px;
+  }
   p a {
     text-decoration: underline; }
 
@@ -23,7 +25,10 @@ h6 {
   font-weight: lighter;
   font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   }
-
+h3 {
+    font-size: 24px;
+    letter-spacing: .15em;
+}
 a {
   color: #333333;
   -webkit-transition: all 0.2s;
@@ -148,6 +153,7 @@ body {
 
 header.masthead {
   margin-bottom: 50px;
+  text-align: center;
   background: no-repeat center center;
   background-color: #777777;
   background-attachment: scroll;
@@ -170,33 +176,47 @@ header.masthead {
     text-align: center; }
     header.masthead .page-heading h1,
     header.masthead .site-heading h1 {
-      font-size: 30px;
+      font-family: 'Cardo';
+      font-size: 34px;
+      letter-spacing: .5em;
       margin-top: 0; }
     header.masthead .page-heading .subheading,
     header.masthead .site-heading .subheading {
-      font-size: 20px;
+      font-size: 18px;
       font-weight: lighter;
       line-height: 1.1;
       display: block;
+      letter-spacing: .5em;
       margin: 10px 0 0;
       font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      text-align: center;
       text-transform: uppercase;
       }
     @media only screen and (min-width: 768px) {
       header.masthead .page-heading h1,
       header.masthead .site-heading h1 {
-        font-size: 40px; } }
+        font-family: 'Cardo';
+        font-size: 34px;
+         letter-spacing: .5em;
+         } }
   header.masthead .post-heading h1 {
-    font-size: 24px; }
+    font-size: 28px;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    font-weight: lighter;
+    }
   header.masthead .post-heading .meta,
   header.masthead .post-heading .subheading {
     line-height: 1.1;
+    letter-spacing: .1em;
     display: block; }
   header.masthead .post-heading .subheading {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: lighter;
     margin: 10px 0 30px;
-    font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    font-family: 'Cardo'; }
   header.masthead .post-heading .meta {
     font-size: 20px;
     font-weight: lighter;
@@ -206,9 +226,10 @@ header.masthead {
       color: white; }
   @media only screen and (min-width: 768px) {
     header.masthead .post-heading h1 {
-      font-size: 40px; }
+      font-size: 28px; }
     header.masthead .post-heading .subheading {
-      font-size: 24px; } }
+      letter-spacing: .1em;
+      font-size: 18px; } }
 
 .post-preview > a {
   color: #333333; }
@@ -216,17 +237,20 @@ header.masthead {
     text-decoration: none;
     color: #0085A1; }
   .post-preview > a > .post-title {
-    font-size: 30px;
-    margin-top: 30px;
-    margin-bottom: 10px; }
-  .post-preview > a > .post-subtitle {
     font-family: 'Cardo';
-    font-weight: lighter;
+    font-size: 26px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+     }
+  .post-preview > a > .post-subtitle {
+    font-family: 'Lato';
+    letter-spacing: .1em;
+    font-size: 16px;
     margin: 0 0 10px; }
 
 .post-preview > .post-meta {
   font-size: 18px;
-  font-style: italic;
   margin-top: 0;
   color: #777777; }
   .post-preview > .post-meta > a {
@@ -238,7 +262,8 @@ header.masthead {
 
 @media only screen and (min-width: 768px) {
   .post-preview > a > .post-title {
-    font-size: 36px; } }
+    padding-bottom: 10px;
+    font-size: 26px; } }
 
 .floating-label-form-group {
   font-size: 14px;

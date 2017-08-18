@@ -25,10 +25,7 @@ h6 {
   font-weight: lighter;
   font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   }
-h3 {
-    font-size: 24px;
-    letter-spacing: .15em;
-}
+
 a {
   color: #333333;
   -webkit-transition: all 0.2s;
@@ -152,10 +149,10 @@ body {
         transform: translate3d(0, 100%, 0); } }
 
 header.masthead {
+  background-image: url('https://paolabottomley.files.wordpress.com/2012/12/hands-on-the-pianos-keys1.jpg');
   margin-bottom: 50px;
   text-align: center;
   background: no-repeat center center;
-  background-color: #777777;
   background-attachment: scroll;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -176,9 +173,10 @@ header.masthead {
     text-align: center; }
     header.masthead .page-heading h1,
     header.masthead .site-heading h1 {
-      font-size: 26px;
+      font-family: 'Lato';
       text-transform: uppercase;
-      letter-spacing: .5em;
+      font-size: 30px;
+      letter-spacing: .8em;
       margin-top: 0; }
     header.masthead .page-heading .subheading,
     header.masthead .site-heading .subheading {
@@ -195,8 +193,10 @@ header.masthead {
     @media only screen and (min-width: 768px) {
       header.masthead .page-heading h1,
       header.masthead .site-heading h1 {
-        font-size: 26px;
-         letter-spacing: .5em;
+        font-family: 'Lato';
+        text-transform: uppercase;
+        font-size: 30px;
+        letter-spacing: .8em;
          } }
   header.masthead .post-heading h1 {
     font-size: 28px;
@@ -236,21 +236,27 @@ header.masthead {
     text-decoration: none;
     color: #0085A1; }
   .post-preview > a > .post-title {
-    font-size: 30px;
+    font-family: 'Lato';
+    font-size: 24px;
+    text-transform: uppercase;
+    letter-spacing: .15em;
     margin-top: 30px;
-    margin-bottom: 10px; }
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+     }
   .post-preview > a > .post-subtitle {
     font-family: 'Cardo';
-    font-weight: lighter;
+    line-height: 1.75em;
+    font-size: 16px;
     margin: 0 0 10px; }
 
 .post-preview > .post-meta {
   font-size: 18px;
-  font-style: italic;
   margin-top: 0;
   color: #777777; }
   .post-preview > .post-meta > a {
     text-decoration: none;
+    font-style: italic;
     color: #333333; }
     .post-preview > .post-meta > a:focus, .post-preview > .post-meta > a:hover {
       text-decoration: underline;
@@ -258,7 +264,11 @@ header.masthead {
 
 @media only screen and (min-width: 768px) {
   .post-preview > a > .post-title {
-    font-size: 36px; } }
+    font-family: 'Lato';
+    text-transform: uppercase;
+    letter-spacing: .15em;
+    padding-bottom: 10px;
+    font-size: 24px; } }
 
 .floating-label-form-group {
   font-size: 14px;
