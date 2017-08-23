@@ -173,10 +173,13 @@ header.masthead {
     text-align: center; }
     header.masthead .page-heading h1,
     header.masthead .site-heading h1 {
+      padding-top: 0px;
       font-family: 'Lato';
       text-transform: uppercase;
-      font-size: 30px;
-      letter-spacing: .8em;
+      font-weight: lighter;
+      font-size: 24px;
+      line-height: 150%;
+      letter-spacing: .6em;
       margin-top: 0; }
     header.masthead .page-heading .subheading,
     header.masthead .site-heading .subheading {
@@ -193,15 +196,19 @@ header.masthead {
     @media only screen and (min-width: 768px) {
       header.masthead .page-heading h1,
       header.masthead .site-heading h1 {
+        padding-top: 0pxl
         font-family: 'Lato';
+        font-weight: lighter;
         text-transform: uppercase;
-        font-size: 30px;
-        letter-spacing: .8em;
+        line-height: 150%;
+        font-size: 24px;
+        letter-spacing: .6em;
          } }
   header.masthead .post-heading h1 {
-    font-size: 28px;
+    font-size: 24px;
+    line-height: 150%;
     text-transform: uppercase;
-    letter-spacing: .1em;
+    letter-spacing: .4em;
     font-weight: lighter;
     }
   header.masthead .post-heading .meta,
@@ -225,7 +232,11 @@ header.masthead {
       color: white; }
   @media only screen and (min-width: 768px) {
     header.masthead .post-heading h1 {
-      font-size: 28px; }
+      font-size: 24px;
+      font-weight: lighter;
+      letter-spacing: .4em;
+      line-height: 150%;
+      }
     header.masthead .post-heading .subheading {
       letter-spacing: .1em;
       font-size: 18px; } }
@@ -237,9 +248,9 @@ header.masthead {
     color: #0085A1; }
   .post-preview > a > .post-title {
     font-family: 'Lato';
-    font-size: 24px;
+    font-size: 18px;
     text-transform: uppercase;
-    letter-spacing: .15em;
+    letter-spacing: .2em;
     margin-top: 30px;
     margin-bottom: 10px;
     padding-bottom: 10px;
@@ -266,9 +277,10 @@ header.masthead {
   .post-preview > a > .post-title {
     font-family: 'Lato';
     text-transform: uppercase;
-    letter-spacing: .15em;
+    font-size: 18px;
+    letter-spacing: .2em;
     padding-bottom: 10px;
-    font-size: 24px; } }
+    } }
 
 .floating-label-form-group {
   font-size: 14px;
