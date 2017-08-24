@@ -46,6 +46,13 @@ blockquote {
   font-weight: 700;
   margin-top: 60px; }
 
+.small-title {
+    font-size: 24px;
+    font-weight: lighter;
+    letter-spacing: .4em;
+    line-height: 150%;
+}
+
 .caption {
   font-size: 14px;
   font-style: italic;
